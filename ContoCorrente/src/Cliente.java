@@ -1,7 +1,7 @@
 public class Cliente extends Thread{
 
-	private ContoCorrente conto;
-	private double addebito;
+	protected ContoCorrente conto;
+	protected double addebito;
 	
 	public Cliente(ContoCorrente c, double addebbito) {
 		conto = c;
@@ -9,7 +9,11 @@ public class Cliente extends Thread{
 	}
 	
 	public void run() {
-		conto.addebito(addebito);
+		try {
+			conto.addebito(addebito);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

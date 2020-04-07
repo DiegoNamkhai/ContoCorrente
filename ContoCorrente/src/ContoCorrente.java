@@ -28,24 +28,36 @@ public class ContoCorrente {
 	}
 	
 	
-	public void addebito(double addebito) throws InterruptedException {
+	public boolean addebito(double addebito) throws InterruptedException {
 		
 		mutex.acquire(1);
 		if(flagFido){
 		 	if(addebito<saldo){
 		 		saldo -= addebito;
+		 		mutex.release(1);
+		 		return true;
 		 	}
 		 	else {
+		 		mutex.release(1);
 		 		System.out.println("Transazione annullata, saldo insufficente");
+		 		return false;
 		 	}
 		 }
 		else {
 		 	if ((addebito - saldo) < fido){
 		 		saldo -= addebito;
+		 		mutex.release(1);
+		 		return true;
+		 	}
+		 	else {
+		 		mutex.release(1);
+		 		System.out.println("Transazione annullata, fido terminato");
+		 		return false;
 		 	}
 		 
 		 }
-		mutex.release(1);
+		
+		
 	}
 	
 	public void stampaSaldo() {
