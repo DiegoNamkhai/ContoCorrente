@@ -1,4 +1,5 @@
 
+
 public class Rate extends Cliente{
 
 	private int nRate;
@@ -15,5 +16,19 @@ public class Rate extends Cliente{
 		}
 		
 	}
-
+	
+	public boolean time() {
+		
+		long tempoIniziale = System.currentTimeMillis();
+		long tempoFinale;
+		long tempoTrascorso = 0;
+		while(nRate != 0) {
+			while(tempoTrascorso == 30) {	
+				tempoFinale = System.currentTimeMillis();
+				tempoTrascorso = tempoTrascorso + (tempoFinale - tempoIniziale);
+			}
+			nRate--;
+		}
+		return true;
+	}
 }
