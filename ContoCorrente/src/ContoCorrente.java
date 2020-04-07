@@ -6,12 +6,17 @@ public class ContoCorrente {
 	private String conto;
 	private double saldo;
 	private double fido;
-	Semaphore mutex;//Ivan e Diego
+	private boolean flagFido;
+	Semaphore mutex = new Semaphore(1);
 	
 	public ContoCorrente(double f) {
 		
-		fido = f;
-		mutex = new Semaphore(1);
+		fido = f; 
+		flagFido = true;
+	}
+	
+	public ContoCorrente() {
+		flagFido = false;
 	}
 
 	
@@ -23,20 +28,27 @@ public class ContoCorrente {
 	}
 	
 	
-	public void addebito(double a) throws InterruptedException {
+	public void addebito(double addebito) throws InterruptedException {
 		
 		mutex.acquire(1);
-		if(a < saldo || (a - saldo) < fido) {
-			saldo -= a;
-		}
+		if(flagFido){
+		 	if(addebito<saldo){
+		 		saldo -= addebito;
+		 	}
+		 	else {
+		 		System.out.println("Transazione annullata, saldo insufficente");
+		 	}
+		 }
 		else {
-			System.out.println("L'importo inserito supera il fido bancario di €" + (((saldo + fido) - a) * (-1)));
-		}
+		 	if ((addebito - saldo) < fido){
+		 		saldo -= addebito;
+		 	}
+		 
+		 }
 		mutex.release(1);
 	}
 	
 	public void stampaSaldo() {
-		//saaaaassssi
 		if(saldo > 0) {
 			System.out.println("Saldo attuale: €" + saldo);
 		}
