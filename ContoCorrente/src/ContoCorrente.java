@@ -13,10 +13,7 @@ public class ContoCorrente {
 		fido = f;
 		mutex = new Semaphore(1);
 	}
-	
-	public void sos() {
-		
-	}
+
 	
 	public void accredito(double a) throws InterruptedException {
 		
@@ -25,10 +22,6 @@ public class ContoCorrente {
 		mutex.release(1);
 	}
 	
-	
-	
-	
-	//vorrei fare un bel metodo sos
 	
 	public void addebito(double a) throws InterruptedException {
 		
