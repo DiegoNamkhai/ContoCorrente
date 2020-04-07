@@ -7,12 +7,15 @@ public class ContoCorrente {
 	private double saldo;
 	private double fido;
 	Semaphore mutex;//Ivan e Diego
-
 	
 	public ContoCorrente(double f) {
 		
 		fido = f;
 		mutex = new Semaphore(1);
+	}
+	
+	public void sos() {
+		
 	}
 	
 	public void accredito(double a) throws InterruptedException {
