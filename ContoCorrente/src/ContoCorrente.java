@@ -34,7 +34,7 @@ public class ContoCorrente {
 	}
 	
 	public void stampaSaldo() {
-		
+		//sasa
 		if(saldo > 0) {
 			System.out.println("Saldo attuale: €" + saldo);
 		}
