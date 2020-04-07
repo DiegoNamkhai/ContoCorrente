@@ -6,7 +6,7 @@ public class ContoCorrente {
 	private String conto;
 	private double saldo;
 	private double fido;
-	Semaphore mutex;
+	Semaphore mutex;//diego
 	
 	public ContoCorrente(double f) {
 		
