@@ -22,6 +22,11 @@ public class ContoCorrente {
 		mutex.release(1);
 	}
 	
+	
+	
+	
+	//vorrei fare un bel metodo sos
+	
 	public void addebito(double a) throws InterruptedException {
 		
 		mutex.acquire(1);
