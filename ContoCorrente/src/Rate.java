@@ -20,15 +20,14 @@ public class Rate extends Cliente{
 	public boolean time() {
 		
 		long tempoIniziale = System.currentTimeMillis();
+		tempoIniziale = tempoIniziale / 1000; //Da millisecondi a secondi
 		long tempoFinale;
 		long tempoTrascorso = 0;
-		while(nRate != 0) {
-			while(tempoTrascorso == 30) {	
+		while(tempoTrascorso == 30) {	
 				tempoFinale = System.currentTimeMillis();
+				tempoFinale = tempoFinale / 1000; //Da millisecondi a secondi
 				tempoTrascorso = tempoTrascorso + (tempoFinale - tempoIniziale);
-			}
-			nRate--;
 		}
-		return true;
+			return true;		
 	}
 }
