@@ -1,4 +1,4 @@
-import java.util.Date;
+
 import java.util.concurrent.Semaphore;
 
 public class ContoCorrente {
@@ -29,30 +29,31 @@ public class ContoCorrente {
 	
 	
 	public boolean addebito(double addebito) throws InterruptedException {
+		//ritorna true se é possibile effettuare la'addebito, altrimenti false
 		
 		mutex.acquire(1);
-		if(flagFido){
-		 	if(addebito<saldo){
+		if(!flagFido){//controllo se con conto con fido o meno
+		 	if(addebito<saldo){ //no conto fido
 		 		saldo -= addebito;
 		 		mutex.release(1);
-		 		return true;
+		 		return true;//effettua transazione
 		 	}
 		 	else {
 		 		mutex.release(1);
 		 		System.out.println("Transazione annullata, saldo insufficente");
-		 		return false;
+		 		return false;//non effettua transazione
 		 	}
 		 }
-		else {
+		else {//con conto fido
 		 	if ((addebito - saldo) < fido){
 		 		saldo -= addebito;
 		 		mutex.release(1);
-		 		return true;
+		 		return true;//effettua transazione
 		 	}
 		 	else {
 		 		mutex.release(1);
 		 		System.out.println("Transazione annullata, fido terminato");
-		 		return false;
+		 		return false;//non effettua transazione
 		 	}
 		 
 		 }
