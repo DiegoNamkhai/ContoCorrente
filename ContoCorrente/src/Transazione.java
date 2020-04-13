@@ -58,12 +58,20 @@ public class Transazione extends Thread{
 
 		break;
 		case "accredito":
+			Accredito accredito = new Accredito (conto, soldi);
+			accredito.start();
 		
 		break;
 		case "adRate":
+			adRate addebitoARate = new adRate (conto, soldi, nRate);
+			addebitoARate.start();
+			
 		break;
 		
 		case "acRate":
+			acRate accreditoARate = new acRate (conto, soldi, nRate);
+			accreditoARate.start();
+			
 		break;
 		
 		} 
