@@ -11,6 +11,5 @@ public class Addebito extends Transazione{
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-	}
-	
+	}	
 }

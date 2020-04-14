@@ -5,55 +5,54 @@ import java.util.concurrent.Semaphore;
 public class ContoCorrente {
 
 	private IBAN IBAN;
-	private double interessi = 5;//siamo molto generosi(serve a vedere la crescita)
+	private double interessi = 5;// Siamo molto generosi(serve a vedere la crescita)
 	private double saldo;
 	private double fido;
 	private boolean flagFido;
 	Semaphore mutex = new Semaphore(1);
 	private static int incConto = 0;
 	private String conto;
-	private String ABI = "69696";//banca Ivan&Diego
-	private String [] CAB = {"11111","22222","33333"};//filiale:
-	//via Ugaccione della fagiola 17A||11111
-	//via del Bandino 32A||22222
-	//Piazza della Repubblica 12B||33333
+	private String ABI = "69696";// Banca Ivan&Diego
+	private String [] CAB = {"11111","22222","33333"};// Filiale:
+														// Via Ugaccione della fagiola 17A||11111
+														// Via del Bandino 32A||22222
+														// Piazza della Repubblica 12B||33333
 	
-	public ContoCorrente(double f) {//IBAN generato, si fido
+	public ContoCorrente(double f) {// IBAN generato, si fido
 		IBAN = this.generazioneIBAN();
 		fido = f; 
 		flagFido = true;
 	}
 	
-	public ContoCorrente() {//IBAN generato, no fido
+	public ContoCorrente() {// IBAN generato, no fido
 		IBAN = this.generazioneIBAN();
 		flagFido = false;
 	}
 	
 	public ContoCorrente(String CodicePaese, String CodiceDiSicurezza, char CIN, String ABI, 
-			String CAB, String Conto, double interessi) {//IBAN dato parte per parte, no fido
+			String CAB, String Conto, double interessi) {// IBAN dato parte per parte, no fido
 		IBAN = new IBAN(CodicePaese, CodiceDiSicurezza, CIN, ABI, CAB, Conto);
 		this.interessi = interessi;
 		flagFido = false;
 	}
 	
-	public ContoCorrente(String Full) {//IBAN dato, no fido
+	public ContoCorrente(String Full) {// IBAN dato, no fido
 		IBAN = new IBAN(Full);
 		flagFido = false;
 	}
 	
 	public ContoCorrente(String CodicePaese, String CodiceDiSicurezza, char CIN, String ABI, 
-			String CAB, String Conto, double f, double interessi) {//IBAN dato parte per parte, si fido
+			String CAB, String Conto, double f, double interessi) {// IBAN dato parte per parte, si fido
 		IBAN = new IBAN(CodicePaese, CodiceDiSicurezza, CIN, ABI, CAB, Conto);
 		fido = f;
 		flagFido = true;
 	}
 	
-	public ContoCorrente(String Full, double f) {//IBAN dato, si fido
+	public ContoCorrente(String Full, double f) {// IBAN dato, si fido
 		IBAN = new IBAN(Full);
 		fido = f;
 		flagFido = true;
 	}
-
 	
 	public IBAN generazioneIBAN() {
 		IBAN IBAN;
@@ -61,11 +60,11 @@ public class ContoCorrente {
 		String CodiceDiSicurezza = Integer.toString((int)(Math.random() * 9));
 		CodiceDiSicurezza += Integer.toString((int)(Math.random() * 9));
 		char CIN = (char)(int)(Math.random() * 25 + 65);
-		//abi della nostra banca
+		// ABI della nostra banca
 		String CAB = null;
-		switch((int)(Math.random() * 2)) {//si usa questo random per mettere il caso che
-		//l'utente vada in una delle filiali,
-		//quindi si rendono un po' piú variabili
+		switch((int)(Math.random() * 2)) {// Si usa questo random per mettere il caso che
+										// l'utente vada in una delle filiali,
+										// quindi si rendono un po' piú variabili
 		case 0:
 		CAB = this.CAB[0];
 		break;
@@ -92,38 +91,34 @@ public class ContoCorrente {
 		mutex.release(1);
 	}
 	
-	
 	public boolean addebito(double addebito) throws InterruptedException {
-		//ritorna true se é possibile effettuare la'addebito, altrimenti false
+		// Ritorna true se é possibile effettuare la'addebito, altrimenti false
 		
 		mutex.acquire(1);
-		if(!flagFido){//controllo se con conto con fido o meno
-		 	if(addebito<saldo){ //no conto fido
+		if(!flagFido){// Controllo se con conto con fido o meno
+		 	if(addebito<saldo){ // No fido
 		 		saldo -= addebito;
 		 		mutex.release(1);
-		 		return true;//effettua transazione
+		 		return true;// Effettua transazione
 		 	}
 		 	else {
 		 		mutex.release(1);
 		 		System.out.println("Transazione annullata, saldo insufficente");
-		 		return false;//non effettua transazione
+		 		return false;// Non effettua transazione
 		 	}
 		 }
-		else {//con conto fido
+		else {// Con fido
 		 	if ((addebito - saldo) < fido){
 		 		saldo -= addebito;
 		 		mutex.release(1);
-		 		return true;//effettua transazione
+		 		return true;// Effettua transazione
 		 	}
 		 	else {
 		 		mutex.release(1);
 		 		System.out.println("Transazione annullata, fido terminato");
-		 		return false;//non effettua transazione
-		 	}
-		 
-		 }
-		
-		
+		 		return false;// Non effettua transazione
+		 	}		 
+		 }		
 	}
 	
 	public void stampaSaldo() {
@@ -136,13 +131,12 @@ public class ContoCorrente {
 		}
 	}
 	
-	
 	public double getSaldo() {
 		
 		return saldo;		
 	}
 	
-	public double getFIdo() {
+	public double getFido() {
 		
 		return fido;		
 	}
@@ -158,8 +152,9 @@ public class ContoCorrente {
 		fido = f;		
 	}
 
-	public IBAN getIBAN() {
-		return IBAN;
+	public String getIBAN() {
+		String s = IBAN.getCodicePaese()+IBAN.getCodiceDiSicurezza()+IBAN.getCIN()+IBAN.getABI()+IBAN.getCAB()+IBAN.getConto();
+		return s;
 	}
 
 	public void setIBAN(IBAN iBAN) {

@@ -7,24 +7,23 @@ public class Transazione extends Thread{
 	protected double soldi;
 	private String tipo;
 	protected int nRate;
-	//1 addebito
-	//2 versamento
-	//3 addebito a nRate
-	//4 versamento a nRate
+	//1 Addebito
+	//2 Versamento
+	//3 Addebito a nRate
+	//4 Versamento a nRate
 
 	public Transazione(ContoCorrente conto, double soldi) {
-		//da usare solo nelle classi figlie
+		// Da usare solo nelle classi figlie
 		this.conto = conto;
 		this.soldi = soldi;
 	}
 	
 	public Transazione(ContoCorrente conto, double soldi, int nRate) {
-		//da usare solo nelle classi figlie
+		// Da usare solo nelle classi figlie
 		this.conto = conto;
 		this.soldi = soldi;
 		this.nRate = nRate;
 	}
-	
 	
 	public Transazione(ContoCorrente conto, double soldi, String tipo) {
 		this.conto = conto;
@@ -49,31 +48,24 @@ public class Transazione extends Thread{
 		this.nRate = nRate;
 	}
 	
-	
 	public void run() {
 		switch(tipo) {
 		case "addebito":
 			Addebito addebito = new Addebito (conto, soldi);
 			addebito.start();
-
 		break;
 		case "accredito":
 			Accredito accredito = new Accredito (conto, soldi);
 			accredito.start();
-		
 		break;
 		case "adRate":
 			adRate addebitoARate = new adRate (conto, soldi, nRate);
 			addebitoARate.start();
-			
 		break;
-		
 		case "acRate":
 			acRate accreditoARate = new acRate (conto, soldi, nRate);
 			accreditoARate.start();
-			
 		break;
-		
 		} 
 	}
 	
@@ -88,5 +80,4 @@ public class Transazione extends Thread{
 			return false;
 		}	
 	}
-
 }

@@ -7,19 +7,12 @@ public class acRate extends Transazione{
 	
 	public void run() {
 		while(nRate>0)
-			try {
-				
+			try {				
 				if (this.time()) {
 					conto.accredito(soldi); 
-				}
-				
+				}				
 			}
-				catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			
+				catch (InterruptedException e) {e.printStackTrace();}
 			nRate--;
 		}
-	
-
 }

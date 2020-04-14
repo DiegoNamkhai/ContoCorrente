@@ -18,8 +18,6 @@ public class IBAN {
 		this.CAB = CAB;
 		this.Conto = Conto;
 		Full = CodicePaese+CodiceDiSicurezza+CIN+CAB+Conto;
-		
-		
 	}
 	
 	public IBAN(String Full)
@@ -31,8 +29,7 @@ public class IBAN {
 		ABI = Full.substring(5, 9);
 		CAB = Full.substring(10, 14);
 		Conto = Full.substring(15, 26);
-	}
-	
+	}	
 
 	public String getCodicePaese() {
 		return CodicePaese;
@@ -80,9 +77,5 @@ public class IBAN {
 
 	public void setConto(String conto) {
 		Conto = conto;
-	}
-	
-	
+	}	
 }
-
-

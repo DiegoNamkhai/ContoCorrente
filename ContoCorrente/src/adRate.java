@@ -7,28 +7,17 @@ public class adRate extends Transazione{
 		super(c, soldi, nRate);
 	}
 
-	
-	
 	public void run() {
 		while(nRate>0)
 			try {
-				
 				if (this.time()) {
 					if(!conto.addebito(soldi)) {
-						//se non avviene l'addebito si posticipa
-						//di un mese la rata
+						// Se non avviene l'addebito si posticipa di un mese la rata
 						nRate++;
 					}
 				} 
-				
 			}
-				catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			
+			catch (InterruptedException e) {e.printStackTrace();}
 			nRate--;
 		}
-		
-	
 }
-
