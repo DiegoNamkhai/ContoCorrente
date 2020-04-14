@@ -10,12 +10,8 @@ public class Operazioni {
 		ContoCorrente c5 = new ContoCorrente("IT","99",'D',"16043","67584","000000008076",2500,1);// Conto corrente con IBAN dato parte per parte con fido e con interessi
 		ContoCorrente c6 = new ContoCorrente("IT33H6549817054000000015693",1000);// Conto corrente con IBAN intero con fido  
 		
-		c1.accredito(4500);
-		c2.accredito(1250);
-		c3.accredito(500);
-		c4.accredito(15000);
-		c5.accredito(250000);
-		c6.accredito(7600);
+		Transazione ac = new Transazione(c1, 3000, "accredito");
+		ac.start();
 		
 		
 		

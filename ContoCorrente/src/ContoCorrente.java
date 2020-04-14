@@ -6,7 +6,7 @@ public class ContoCorrente {
 
 	private IBAN IBAN;
 	private double interessi = 5;// Siamo molto generosi(serve a vedere la crescita)
-	private double saldo;
+	private double saldo = 0;
 	private double fido;
 	private boolean flagFido;
 	Semaphore mutex = new Semaphore(1);
@@ -136,12 +136,10 @@ public class ContoCorrente {
 	}
 	
 	public void stampaSaldo() {
-		if(saldo > 0) {
-			System.out.println("Saldo attuale: €" + saldo);
-		}
-		else {			
-			System.out.println("Il saldo è in rosso di: €" + (saldo * (-1)));
-			System.out.println("Puoi ancora erogare €" + (saldo + fido));
+
+		System.out.println("Saldo attuale: €" + saldo);
+		if(flagFido) {
+			System.out.println("puoi ancora erogare dal fido €" + (fido));
 		}
 	}
 	
@@ -149,6 +147,8 @@ public class ContoCorrente {
 		
 		return saldo;		
 	}
+	
+	
 	
 	public double getFido() {
 		
