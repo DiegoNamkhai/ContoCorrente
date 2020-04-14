@@ -153,12 +153,10 @@ public class ContoCorrente {
 		return fido;		
 	}
 	
-	
 	public void setSaldo(double s) {
 		
 		saldo = s;
 	}
-	
 	
 	public void setFido(double f) {
 		

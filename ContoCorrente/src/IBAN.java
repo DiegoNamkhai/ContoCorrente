@@ -17,7 +17,7 @@ public class IBAN {
 		this.ABI = ABI;
 		this.CAB = CAB;
 		this.Conto = Conto;
-		Full = CodicePaese+CodiceDiSicurezza+CIN+CAB+Conto;
+		Full = CodicePaese+CodiceDiSicurezza+CIN+ABI+CAB+Conto;
 	}
 	
 	public IBAN(String Full)

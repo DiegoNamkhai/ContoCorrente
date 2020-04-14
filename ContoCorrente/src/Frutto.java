@@ -6,18 +6,17 @@ public class Frutto extends Thread{
 	private double interessi;
 	private ContoCorrente conto;
 
-	private int mesi3 = 0;// mesi tre perché é trimestrale
-	private int zeroTime;//giorno di apertura conto
-	private int oneMonth;//un mese dopo
-	//i giorni in un anno sono sempre 365, sennó diverebbe troppo complesso
-	//1 secondo = 1 giorno
+	private int mesi3 = 0;// Mesi tre perché é trimestrale
+	private int zeroTime;// Giorno di apertura conto
+	private int oneMonth;// Un mese dopo
+						// I giorni in un anno sono sempre 365, sennó diverebbe troppo complesso
+						// 1 secondo = 1 giorno
 	
 	public Frutto(ContoCorrente conto, double interessi) {
 		this.interessi = interessi;
 		this.conto = conto;
 	}
 	
-
 	public void run() {
 		
 		Calendar calendar = new GregorianCalendar();
@@ -33,13 +32,8 @@ public class Frutto extends Thread{
 					e.printStackTrace();
 				}
 			}
-		}
-		
-		
-	}
-	
-	
-	
+		}		
+	}	
 
 	private boolean time() {
 		
