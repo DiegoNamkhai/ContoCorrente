@@ -165,9 +165,8 @@ public class ContoCorrente {
 		fido = f;		
 	}
 
-	public String getIBAN() {
-		String s = IBAN.getCodicePaese()+IBAN.getCodiceDiSicurezza()+IBAN.getCIN()+IBAN.getABI()+IBAN.getCAB()+IBAN.getConto();
-		return s;
+	public IBAN getIBAN() {
+		return IBAN;
 	}
 
 	public void setIBAN(IBAN iBAN) {

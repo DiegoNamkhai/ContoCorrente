@@ -77,5 +77,13 @@ public class IBAN {
 
 	public void setConto(String conto) {
 		Conto = conto;
+	}
+
+	public String getFull() {
+		return Full;
+	}
+
+	public void setFull(String full) {
+		Full = full;
 	}	
 }

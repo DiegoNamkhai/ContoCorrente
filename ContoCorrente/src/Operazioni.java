@@ -17,11 +17,11 @@ public class Operazioni {
 		c5.accredito(250000);
 		c6.accredito(7600);
 		
-		System.out.println("Conto corrente con IBAN autogenerato senza fido:\nIBAN: "+c1.getIBAN()+"\nSaldo: "+c1.getSaldo()+"\nFido: "+c1.getFido());
-		System.out.println("Conto corrente con IBAN autogenerato e con fido:\nIBAN: "+c2.getIBAN()+"\nSaldo: "+c2.getSaldo()+"\nFido: "+c2.getFido());	
-		System.out.println("Conto corrente con IBAN dato parte per parte senza fido e con interessi:\nIBAN: "+c3.getIBAN()+"\nSaldo: "+c3.getSaldo()+"\nFido: "+c3.getFido());	
-		System.out.println("Conto corrente con IBAN intero senza fido:\nIBAN: "+c4.getIBAN()+"\nSaldo: "+c4.getSaldo()+"\nFido: "+c4.getFido());	
-		System.out.println("Conto corrente con IBAN dato parte per parte con fido e con interessi:\nIBAN: "+c5.getIBAN()+"\nSaldo: "+c5.getSaldo()+"\nFido: "+c5.getFido());	
-		System.out.println("Conto corrente con IBAN intero con fido:\nIBAN: "+c6.getIBAN()+"\nSaldo: "+c6.getSaldo()+"\nFido: "+c6.getFido());	
+		System.out.println("Conto corrente con IBAN autogenerato senza fido:\nIBAN: "+c1.getIBAN().getFull()+"\nSaldo: "+c1.getSaldo()+"\nFido: "+c1.getFido());
+		System.out.println("Conto corrente con IBAN autogenerato e con fido:\nIBAN: "+c2.getIBAN().getFull()+"\nSaldo: "+c2.getSaldo()+"\nFido: "+c2.getFido());	
+		System.out.println("Conto corrente con IBAN dato parte per parte senza fido e con interessi:\nIBAN: "+c3.getIBAN().getFull()+"\nSaldo: "+c3.getSaldo()+"\nFido: "+c3.getFido());	
+		System.out.println("Conto corrente con IBAN intero senza fido:\nIBAN: "+c4.getIBAN().getFull()+"\nSaldo: "+c4.getSaldo()+"\nFido: "+c4.getFido());	
+		System.out.println("Conto corrente con IBAN dato parte per parte con fido e con interessi:\nIBAN: "+c5.getIBAN().getFull()+"\nSaldo: "+c5.getSaldo()+"\nFido: "+c5.getFido());	
+		System.out.println("Conto corrente con IBAN intero con fido:\nIBAN: "+c6.getIBAN().getFull()+"\nSaldo: "+c6.getSaldo()+"\nFido: "+c6.getFido());	
 	}
 }
