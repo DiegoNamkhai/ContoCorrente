@@ -17,6 +17,8 @@ public class Operazioni {
 		c5.accredito(250000);
 		c6.accredito(7600);
 		
+		
+		
 		System.out.println("Conto corrente con IBAN autogenerato senza fido:\nIBAN: "+c1.getIBAN().getFull()+"\nSaldo: "+c1.getSaldo()+"\nFido: "+c1.getFido());
 		System.out.println("Conto corrente con IBAN autogenerato e con fido:\nIBAN: "+c2.getIBAN().getFull()+"\nSaldo: "+c2.getSaldo()+"\nFido: "+c2.getFido());	
 		System.out.println("Conto corrente con IBAN dato parte per parte senza fido e con interessi:\nIBAN: "+c3.getIBAN().getFull()+"\nSaldo: "+c3.getSaldo()+"\nFido: "+c3.getFido());	

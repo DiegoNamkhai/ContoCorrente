@@ -25,6 +25,7 @@ public class Frutto extends Thread{
 		if (oneMonth>59)
 			oneMonth -= 60;
 		while(true) {
+			System.out.println("sas");
 			if(this.time()) { 
 				try {
 					conto.accredito(conto.getSaldo()*interessi);
