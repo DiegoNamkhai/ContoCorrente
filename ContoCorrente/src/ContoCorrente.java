@@ -22,11 +22,15 @@ public class ContoCorrente {
 		IBAN = this.generazioneIBAN();
 		fido = f; 
 		flagFido = true;
+		Frutto frutto = new Frutto ( this, interessi);
+		frutto.start();
 	}
 	
 	public ContoCorrente() {// IBAN generato, no fido
 		IBAN = this.generazioneIBAN();
 		flagFido = false;
+		Frutto frutto = new Frutto ( this, interessi);
+		frutto.start();
 	}
 	
 	public ContoCorrente(String CodicePaese, String CodiceDiSicurezza, char CIN, String ABI, 
@@ -34,11 +38,15 @@ public class ContoCorrente {
 		IBAN = new IBAN(CodicePaese, CodiceDiSicurezza, CIN, ABI, CAB, Conto);
 		this.interessi = interessi;
 		flagFido = false;
+		Frutto frutto = new Frutto ( this, interessi);
+		frutto.start();
 	}
 	
 	public ContoCorrente(String Full) {// IBAN dato, no fido
 		IBAN = new IBAN(Full);
 		flagFido = false;
+		Frutto frutto = new Frutto ( this, interessi);
+		frutto.start();
 	}
 	
 	public ContoCorrente(String CodicePaese, String CodiceDiSicurezza, char CIN, String ABI, 
@@ -46,12 +54,16 @@ public class ContoCorrente {
 		IBAN = new IBAN(CodicePaese, CodiceDiSicurezza, CIN, ABI, CAB, Conto);
 		fido = f;
 		flagFido = true;
+		Frutto frutto = new Frutto ( this, interessi);
+		frutto.start();
 	}
 	
 	public ContoCorrente(String Full, double f) {// IBAN dato, si fido
 		IBAN = new IBAN(Full);
 		fido = f;
 		flagFido = true;
+		Frutto frutto = new Frutto ( this, interessi);
+		frutto.start();
 	}
 	
 	public IBAN generazioneIBAN() {
@@ -146,6 +158,7 @@ public class ContoCorrente {
 		
 		saldo = s;
 	}
+	
 	
 	public void setFido(double f) {
 		
