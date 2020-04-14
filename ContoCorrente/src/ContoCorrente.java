@@ -103,7 +103,7 @@ public class ContoCorrente {
 		mutex.acquire(1);
 		saldo += a;
 		mutex.release(1);
-		System.out.println("Accredito di: €"+a);
+		System.out.println("Accredito di: â‚¬"+a);
 		System.out.println("IBAN: "+getIBAN().getFull()+"\nSaldo: "+getSaldo()+"\nFido: "+getFido());
 	}
 	
@@ -114,7 +114,7 @@ public class ContoCorrente {
 		if(!flagFido){// Controllo se con conto con fido o meno
 		 	if(addebito<saldo){ // No fido
 		 		saldo -= addebito;
-		 		System.out.println("Addebito di: €"+addebito);
+		 		System.out.println("Addebito di: â‚¬"+addebito);
 		 		System.out.println("IBAN: "+getIBAN().getFull()+"\nSaldo: "+getSaldo()+"\nFido: "+getFido());
 		 		mutex.release(1);
 		 		return true;// Effettua transazione
@@ -128,7 +128,7 @@ public class ContoCorrente {
 		else {// Con fido
 		 	if ((addebito - saldo) < fido){
 		 		saldo -= addebito;
-		 		System.out.println("Addebito di: €"+addebito);
+		 		System.out.println("Addebito di: â‚¬"+addebito);
 		 		System.out.println("IBAN: "+getIBAN().getFull()+"\nSaldo: "+getSaldo()+"\nFido: "+getFido());
 		 		mutex.release(1);
 		 		return true;// Effettua transazione

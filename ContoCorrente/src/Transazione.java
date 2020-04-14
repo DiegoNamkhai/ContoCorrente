@@ -31,10 +31,10 @@ public class Transazione extends Thread{
 		this.conto = conto;
 		this.soldi = soldi;
 		if (tipo.compareTo("addebito") == 0){
-			tipo = "addebito";
+			this.tipo = "addebito";
 		}
 		else {
-			tipo = "accredito";
+			this.tipo = "accredito";
 		}
 	}
 	
@@ -42,10 +42,10 @@ public class Transazione extends Thread{
 		this.conto = conto;
 		this.soldi = soldi;
 		if (tipo.compareTo("addebito") == 0){
-			tipo = "adRate";
+			this.tipo = "adRate";
 		}
 		else {
-			tipo = "acRate";
+			this.tipo = "acRate";
 		}
 		this.nRate = nRate;
 	}
@@ -56,6 +56,7 @@ public class Transazione extends Thread{
 		int oneMonth = zeroTime + 30;
 		if (oneMonth>59)
 			oneMonth -= 60;
+		System.out.println(tipo);
 		switch(tipo) {
 		case "addebito":
 			Addebito addebito = new Addebito (conto, soldi);
