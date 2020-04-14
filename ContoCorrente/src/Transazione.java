@@ -56,7 +56,6 @@ public class Transazione extends Thread{
 		int oneMonth = zeroTime + 30;
 		if (oneMonth>59)
 			oneMonth -= 60;
-		System.out.println(tipo);
 		switch(tipo) {
 		case "addebito":
 			Addebito addebito = new Addebito (conto, soldi);

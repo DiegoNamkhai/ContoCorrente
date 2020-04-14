@@ -102,9 +102,10 @@ public class ContoCorrente {
 		
 		mutex.acquire(1);
 		saldo += a;
-		mutex.release(1);
 		System.out.println("Accredito di: €"+a);
-		System.out.println("IBAN: "+getIBAN().getFull()+"\nSaldo: "+getSaldo()+"\nFido: "+getFido());
+		System.out.println("IBAN: "+getIBAN().getFull()+"\nSaldo: "+getSaldo());
+		mutex.release(1);
+
 	}
 	
 	public boolean addebito(double addebito) throws InterruptedException {
@@ -115,7 +116,7 @@ public class ContoCorrente {
 		 	if(addebito<saldo){ // No fido
 		 		saldo -= addebito;
 		 		System.out.println("Addebito di: €"+addebito);
-		 		System.out.println("IBAN: "+getIBAN().getFull()+"\nSaldo: "+getSaldo()+"\nFido: "+getFido());
+		 		System.out.println("IBAN: "+getIBAN().getFull()+"\nSaldo: "+getSaldo());
 		 		mutex.release(1);
 		 		return true;// Effettua transazione
 		 	}
@@ -146,6 +147,15 @@ public class ContoCorrente {
 		System.out.println("Saldo attuale: €" + saldo);
 		if(flagFido) {
 			System.out.println("puoi ancora erogare dal fido €" + (fido));
+		}
+	}
+	
+	public void stampaInfo() {
+		if(flagFido) {
+			System.out.println("IBAN: "+IBAN.getFull()+"\nSaldo: "+saldo+"\nFido: "+fido+"\nInteressi: "+interessi+"%");
+		}
+		else {
+			System.out.println("IBAN: "+IBAN.getFull()+"\nSaldo: "+saldo+"\nInteressi: "+interessi+"%");
 		}
 	}
 	

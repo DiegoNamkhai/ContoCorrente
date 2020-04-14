@@ -10,7 +10,13 @@ public class Operazioni {
 		ContoCorrente c5 = new ContoCorrente("IT","99",'D',"16043","67584","000000008076",2500,1);// Conto corrente con IBAN dato parte per parte con fido e con interessi
 		ContoCorrente c6 = new ContoCorrente("IT33H6549817054000000015693",1000);// Conto corrente con IBAN intero con fido  
 		
-
+		System.out.println("Conto corrente con IBAN autogenerato senza fido:\nIBAN: "+c1.getIBAN().getFull()+"\nSaldo: "+c1.getSaldo()+"\nFido: "+c1.getFido());
+		System.out.println("Conto corrente con IBAN autogenerato e con fido:\nIBAN: "+c2.getIBAN().getFull()+"\nSaldo: "+c2.getSaldo()+"\nFido: "+c2.getFido());	
+		System.out.println("Conto corrente con IBAN dato parte per parte senza fido e con interessi:\nIBAN: "+c3.getIBAN().getFull()+"\nSaldo: "+c3.getSaldo()+"\nFido: "+c3.getFido());	
+		System.out.println("Conto corrente con IBAN intero senza fido:\nIBAN: "+c4.getIBAN().getFull()+"\nSaldo: "+c4.getSaldo()+"\nFido: "+c4.getFido());	
+		System.out.println("Conto corrente con IBAN dato parte per parte con fido e con interessi:\nIBAN: "+c5.getIBAN().getFull()+"\nSaldo: "+c5.getSaldo()+"\nFido: "+c5.getFido());	
+		System.out.println("Conto corrente con IBAN intero con fido:\nIBAN: "+c6.getIBAN().getFull()+"\nSaldo: "+c6.getSaldo()+"\nFido: "+c6.getFido());
+		
 		Transazione t1 = new Transazione(c1, 2500, "accredito");
 		Transazione t2 = new Transazione(c2, 8000, "accredito");
 		Transazione t3 = new Transazione(c3, 250000, "accredito");
@@ -32,15 +38,16 @@ public class Operazioni {
 		t5.join();
 		t6.join();
 		
-		System.out.println("Conto corrente con IBAN autogenerato senza fido:\nIBAN: "+c1.getIBAN().getFull()+"\nSaldo: "+c1.getSaldo()+"\nFido: "+c1.getFido());
-		System.out.println("Conto corrente con IBAN autogenerato e con fido:\nIBAN: "+c2.getIBAN().getFull()+"\nSaldo: "+c2.getSaldo()+"\nFido: "+c2.getFido());	
-		System.out.println("Conto corrente con IBAN dato parte per parte senza fido e con interessi:\nIBAN: "+c3.getIBAN().getFull()+"\nSaldo: "+c3.getSaldo()+"\nFido: "+c3.getFido());	
-		System.out.println("Conto corrente con IBAN intero senza fido:\nIBAN: "+c4.getIBAN().getFull()+"\nSaldo: "+c4.getSaldo()+"\nFido: "+c4.getFido());	
-		System.out.println("Conto corrente con IBAN dato parte per parte con fido e con interessi:\nIBAN: "+c5.getIBAN().getFull()+"\nSaldo: "+c5.getSaldo()+"\nFido: "+c5.getFido());	
-		System.out.println("Conto corrente con IBAN intero con fido:\nIBAN: "+c6.getIBAN().getFull()+"\nSaldo: "+c6.getSaldo()+"\nFido: "+c6.getFido());
+		c1.stampaInfo();
+		c2.stampaInfo();
+		c3.stampaInfo();
+		c4.stampaInfo();
+		c5.stampaInfo();
+		c6.stampaInfo();
+		
 		
 		Transazione t7 = new Transazione(c2, 500, "addebito");
-		Transazione t8 = new Transazione(c2, 2500, "accredito",12);
+		Transazione t8 = new Transazione(c2, 2500, "accredito", 1);
 		Transazione t9 = new Transazione(c2, 250, "accredito");
 		Transazione t10 = new Transazione(c2, 30, "addebito", 10);
 		Transazione t11 = new Transazione(c2, 100, "addebito");
