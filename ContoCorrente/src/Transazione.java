@@ -7,17 +7,12 @@ public class Transazione extends Thread{
 	protected double soldi;
 	private String tipo;
 	protected int nRate;
-<<<<<<< HEAD
-	//1 Addebito
-	//2 Versamento
-	//3 Addebito a nRate
-	//4 Versamento a nRate
-=======
+
 	protected int zeroTime;//giorno di apertura conto
 	protected int oneMonth;//un mese dopo
 	//i giorni in un anno sono sempre 365, sennó diverebbe troppo complesso
 	//1 secondo = 1 giorno
->>>>>>> branch 'master' of https://github.com/DiegoNamkhai/ContoCorrente.git
+
 
 	public Transazione(ContoCorrente conto, double soldi) {
 		// Da usare solo nelle classi figlie
