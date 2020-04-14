@@ -11,7 +11,7 @@ public class ContoCorrente {
 	private boolean flagFido;
 	Semaphore mutex = new Semaphore(1);
 	private static int incConto = 0;
-	private String conto;
+	private String conto = "";
 	private String ABI = "69696";// Banca Ivan&Diego
 	private String [] CAB = {"11111","22222","33333"};// Filiale:
 														// Via Ugaccione della fagiola 17A||11111
@@ -75,8 +75,8 @@ public class ContoCorrente {
 		// ABI della nostra banca
 		String CAB = null;
 		switch((int)(Math.random() * 2)) {// Si usa questo random per mettere il caso che
-										// l'utente vada in una delle filiali,
-										// quindi si rendono un po' piú variabili
+		// l'utente vada in una delle filiali,
+		// quindi si rendono un po' piú variabili
 		case 0:
 		CAB = this.CAB[0];
 		break;
@@ -87,12 +87,14 @@ public class ContoCorrente {
 		CAB = this.CAB[2];
 		break;
 		}
-		String incConto = Integer.toString(this.incConto);
-		for (int i=0; i<12-incConto.length(); i++) {
+		int appConto = incConto;
+		String Conto = Integer.toString(appConto);
+		for (int i=0; i<12-Conto.length(); i++) {
 			conto += "0";
 		}
-		conto += incConto;
+		conto += Conto;
 		IBAN = new IBAN(paese, CodiceDiSicurezza, CIN, ABI, CAB, conto);
+		incConto ++;
 		return IBAN;
 	}
 	
@@ -153,10 +155,12 @@ public class ContoCorrente {
 		return fido;		
 	}
 	
+	
 	public void setSaldo(double s) {
 		
 		saldo = s;
 	}
+	
 	
 	public void setFido(double f) {
 		
