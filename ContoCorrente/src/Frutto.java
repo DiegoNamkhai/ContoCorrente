@@ -2,7 +2,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Frutto extends Thread{
-	// Interessi attici senza vincoli con capitalizzazione trimestrale
+	// Interessi attivi senza vincoli con capitalizzazione trimestrale
 	private double interessi;
 	private ContoCorrente conto;
 
